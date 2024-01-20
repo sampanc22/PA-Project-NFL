@@ -5,7 +5,7 @@ import pandas as pd
 # set up Beautiful Soup for quarterback data
 homepage = "https://www.sports-reference.com/cfb/years/2023-passing.html"
 url = urlopen(homepage)
-stats = BeautifulSoup(url, features='lxml')
+stats = BeautifulSoup(url, features='html.parser')
 
 col_headers = stats.find_all('tr')[1]
 col_headers = [i.getText() for i in col_headers.findAll('th')]
