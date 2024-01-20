@@ -16,17 +16,22 @@ qb_data = []
 
 # parse through regular season weeks
 for i in range(1, 18):
-    qb_data.append([col.getText() for col in rows[i].findAll('td')])
+    row_data = []
+    for col in rows[i].findAll(['th', 'td']):
+        row_data.append(col.getText())
+    if row_data[0] == '':
+        continue
+    qb_data.append(row_data)
 
 # rename columns appropriately
-qb_df = pd.DataFrame(qb_data, columns=col_headers[1:])
+qb_df = pd.DataFrame(qb_data, columns=col_headers[0:])
 qb_df.columns.values[-2] = 'Rush Y/A'
 qb_df.columns.values[-4] = 'RushTD'
 qb_df.columns.values[-5] = 'RushYds'
 qb_df.columns.values[-6] = 'RushAtt'
 
 # filter for relevant stats
-relevant_stats = ['Team', 'Home/Away', 'Opp', 'Result', 'Cmp%', 'Yds', 'TD', 'TD%', 'Int%',
+relevant_stats = ['Date', 'Team', 'Home/Away', 'Opp', 'Result', 'Cmp%', 'Yds', 'TD', 'TD%', 'Int%',
                   'Y/A', 'Rate', 'Sk%', 'RushAtt', 'RushYds', 'RushTD', 'Rush Y/A', 'Fmb']
 
 qb_df = qb_df[relevant_stats]

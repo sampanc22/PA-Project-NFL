@@ -40,5 +40,5 @@ for column in qb_df:
     else:
         qb_df[column + ' Rank'] = qb_df[column].rank(ascending=False).astype(int)
 
-# print(qb_df.to_string())
+print(qb_df.to_string())
 
