@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 # set up Beautiful Soup for quarterback data
-homepage = "https://www.pro-football-reference.com/players/H/HurtJa00.htm"
+homepage = "https://www.pro-football-reference.com/players/C/CousKi00.htm"
 url = urlopen(homepage)
 stats = BeautifulSoup(url, features='html.parser')
 
