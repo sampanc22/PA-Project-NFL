@@ -14,7 +14,7 @@ rows = stats.find_all('tr')[2:]
 rb_data = []
 
 # parse through data of running backs and add to a list
-for i in range(40):
+for i in range(55):
     if i != 0 and i % 29 == 0:
         continue
     rb_data.append([col.getText() for col in rows[i].findAll('td')])
@@ -30,7 +30,7 @@ for i in relevant_stats:
     rb_df[i] = pd.to_numeric(rb_df[i])
 
 # filter out non-running backs and running backs with less than 5 GS
-rb_df = rb_df.query('GS >= 5')
+# rb_df = rb_df.query('GS >= 5')
 rb_df = rb_df[rb_df['Pos'] == 'RB']
 
 
